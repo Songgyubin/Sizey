@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Sizey</string>
+
+
+
+
+        <!-- facebook login -->
+    <string name="facebook_app_id">3046381035461058</string>
+    <string name="fb_login_protocol_scheme">fb3046381035461058</string>
+    <string name="email_start">이메일로 시작하기</string>
+    <string name="naver_start">네이버로 시작하기</string>
+    <string name="kakao_start">카카오로 시작하기</string>
+    <string name="main_policy">시작하기를 누르면 <u>이용약관</u>에 동의합니다.</string>
+
+</resources>
