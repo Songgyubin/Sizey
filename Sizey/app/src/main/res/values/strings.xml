@@ -2,14 +2,22 @@
     <string name="app_name">Sizey</string>
 
 
-
-
-        <!-- facebook login -->
-    <string name="facebook_app_id">3046381035461058</string>
-    <string name="fb_login_protocol_scheme">fb3046381035461058</string>
     <string name="email_start">이메일로 시작하기</string>
     <string name="naver_start">네이버로 시작하기</string>
     <string name="kakao_start">카카오로 시작하기</string>
     <string name="main_policy">시작하기를 누르면 <u>이용약관</u>에 동의합니다.</string>
+    <string name="next">다음</string>
+    <string name="password_policy">6자리 이상의 비밀번호</string>
+    <string name="password_check">비밀번호를 확인해주세요</string>
+    <string name="password">비밀번호</string>
+    <string name="women">여자</string>
+    <string name="men">남자</string>
+    <string name="nickname">닉네임</string>
+    <string name="nickname_alert">나중에도 설정 가능해요</string>
+    <string name="nickname_policy">2자 이상의 닉네임</string>
+    <string name="service_policy">서비스 이용약관</string>
+    <string name="private_policy">개인정보취급방침</string>
+    <string name="previous">이전</string>
+
 
 </resources>

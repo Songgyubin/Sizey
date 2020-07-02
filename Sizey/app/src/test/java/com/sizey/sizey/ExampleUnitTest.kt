@@ -1,4 +1,4 @@
-package com.songgyubin.sizey
+package com.sizey.sizey
 
 import org.junit.Test
 
