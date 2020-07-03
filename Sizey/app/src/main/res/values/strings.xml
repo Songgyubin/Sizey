@@ -10,14 +10,23 @@
     <string name="password_policy">6자리 이상의 비밀번호</string>
     <string name="password_check">비밀번호를 확인해주세요</string>
     <string name="password">비밀번호</string>
-    <string name="women">여자</string>
-    <string name="men">남자</string>
+    <string name="woman">여자</string>
+    <string name="man">남자</string>
     <string name="nickname">닉네임</string>
     <string name="nickname_alert">나중에도 설정 가능해요</string>
     <string name="nickname_policy">2자 이상의 닉네임</string>
     <string name="service_policy">서비스 이용약관</string>
     <string name="private_policy">개인정보취급방침</string>
     <string name="previous">이전</string>
+    <string name="sign_up">회원가입</string>
+    <string name="welcome">반갑습니다</string>
+    <string name="height">키</string>
+    <string name="weight">몸무게</string>
+    <string name="height_weight_ex">000</string>
+    <string name="cm">cm</string>
+    <string name="kg">kg</string>
+    <string name="go_sign_up">가입하기</string>
+    <string name="policy">이용약관</string>
 
 
 </resources>
