@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "546637350929",
+    "firebase_url": "https://sizey-83bcf.firebaseio.com",
+    "project_id": "sizey-83bcf",
+    "storage_bucket": "sizey-83bcf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:546637350929:android:8191927729463be26349b0",
+        "android_client_info": {
+          "package_name": "com.sizey.sizey"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "546637350929-81iebu0d89infuqps1lmfq0k43b04425.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sizey.sizey",
+            "certificate_hash": "d3709ff748003896fb5e35c9b40642d331bc4c8b"
+          }
+        },
+        {
+          "client_id": "546637350929-nlhh5vo95069udj9fqbs5ev4ch0s2tia.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoZpi59CBtwk6ETaHsEEwUuKA3S-7Mx48"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "546637350929-nlhh5vo95069udj9fqbs5ev4ch0s2tia.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
