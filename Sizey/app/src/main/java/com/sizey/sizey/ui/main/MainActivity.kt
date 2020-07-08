@@ -1,8 +1,10 @@
 package com.sizey.sizey.ui.main
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import com.kakao.auth.AuthType
 import com.kakao.auth.ISessionCallback
 import com.kakao.auth.Session
@@ -15,7 +17,9 @@ import com.nhn.android.naverlogin.OAuthLogin
 import com.nhn.android.naverlogin.OAuthLoginHandler
 import com.sizey.sizey.R
 import com.sizey.sizey.ui.adapter.BottomDotAdapter
+import com.sizey.sizey.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
@@ -28,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     // naver
     private lateinit var naverInstance: OAuthLogin
     private lateinit var naverHandler: OAuthLoginHandler
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +49,9 @@ class MainActivity : AppCompatActivity() {
         btn_kakao_start.setOnClickListener { kakaoLogin() }
 
 
-        naverHandler = object : OAuthLoginHandler() {
+
+        naverHandler = @SuppressLint("HandlerLeak")
+        object : OAuthLoginHandler() {
             override fun run(p0: Boolean) {
                 if (p0) {
                     var accessToken = naverInstance.getAccessToken(this@MainActivity)
@@ -63,6 +70,12 @@ class MainActivity : AppCompatActivity() {
 
         btn_naver_start.setOAuthLoginHandler(naverHandler)
         btn_naver_start.setOnClickListener { naverLogin() }
+        btn_email_start.setOnClickListener { firebaseLogin() }
+    }
+
+    private fun firebaseLogin(){
+        startActivity<LoginActivity>()
+
     }
 
     private fun naverLogin() {
