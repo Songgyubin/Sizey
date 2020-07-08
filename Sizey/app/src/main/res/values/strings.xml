@@ -31,9 +31,9 @@
 
     <!-- kakao -->
     <string name="kakao_app_key">deb1b6f2d0d62f6dc74a9a4876693754</string>
-    <!-- facebook -->
-    <string name="facebook_app_id">1606709722820633</string>
-    <string name="fb_login_protocol_scheme">fb1606709722820633</string>
+    <!-- naver -->
+    <string name="naver_app_id">hoKFoPP88o6CS80Hz1fQ</string>
+    <string name="naver_app_secret">Q8eRAuTjHM</string>
 
 
 </resources>
