@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.auth.FirebaseAuth
 import com.kakao.auth.AuthType
 import com.kakao.auth.ISessionCallback
 import com.kakao.auth.Session
@@ -18,6 +17,7 @@ import com.nhn.android.naverlogin.OAuthLoginHandler
 import com.sizey.sizey.R
 import com.sizey.sizey.ui.adapter.BottomDotAdapter
 import com.sizey.sizey.ui.login.LoginActivity
+import com.sizey.sizey.ui.custom.ZoomOutPageTransformer
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var naverInstance: OAuthLogin
     private lateinit var naverHandler: OAuthLoginHandler
 
+    private var backKeyPressedTime = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +43,9 @@ class MainActivity : AppCompatActivity() {
         // Tutorial viewPager & indicator
         viewpager_main.adapter = BottomDotAdapter(supportFragmentManager)
         viewpager_main.currentItem = 0
-
+        viewpager_main.setPageTransformer(true,
+            ZoomOutPageTransformer()
+        )
         tablayout_main.setupWithViewPager(viewpager_main, true)
         // end
 
@@ -73,9 +76,8 @@ class MainActivity : AppCompatActivity() {
         btn_email_start.setOnClickListener { firebaseLogin() }
     }
 
-    private fun firebaseLogin(){
+    private fun firebaseLogin() {
         startActivity<LoginActivity>()
-
     }
 
     private fun naverLogin() {
@@ -143,4 +145,15 @@ class MainActivity : AppCompatActivity() {
         private const val NAVER_CLIENT_NAME = "네이버 아이디로 로그인"
     }
 
+    override fun onBackPressed() {
+
+        if (System.currentTimeMillis() > backKeyPressedTime+2000){
+            backKeyPressedTime= System.currentTimeMillis()
+            toast("뒤로 버튼을 한번 더 누르시면 종료됩니다.")
+            return
+        }
+        if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
+            finish();
+        }
+    }
 }
