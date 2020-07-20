@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.sizey.sizey.R
 
-class SexNickFragment : Fragment() {
+class SexNickFragment : Fragment(R.layout.fragment_signup_sexnick) {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -16,6 +16,7 @@ class SexNickFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         Log.d(TAG, ": onCreateView")
+
         return inflater.inflate(R.layout.fragment_signup_sexnick, container, false)
     }
 

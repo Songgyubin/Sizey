@@ -6,9 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.sizey.sizey.R
 
-class EmailFragment : Fragment() {
+class EmailFragment : Fragment(){
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,7 +23,16 @@ class EmailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d(TAG, ": onViewCreated")
+    }
 
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG, ": onStop")
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        Log.d(TAG, ": onDestrotyView")
     }
 
     companion object {

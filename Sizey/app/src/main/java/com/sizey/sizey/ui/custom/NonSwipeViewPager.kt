@@ -1,10 +1,11 @@
 package com.sizey.sizey.ui.custom
 
 import android.content.Context
+import android.util.AttributeSet
 import android.view.MotionEvent
 import androidx.viewpager.widget.ViewPager
 
-class NonSwipeViewPager(context:Context) :ViewPager(context){
+class NonSwipeViewPager(context:Context,attrs:AttributeSet) :ViewPager(context,attrs){
     override fun onInterceptTouchEvent(ev: MotionEvent?): Boolean {
         return false
     }

@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 
-class SignPagerAdapter(val fm: FragmentManager) :
+class SignPagerAdapter(fm: FragmentManager) :
     FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     var items = ArrayList<Fragment>()
 

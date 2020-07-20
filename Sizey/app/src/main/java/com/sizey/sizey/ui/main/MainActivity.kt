@@ -16,8 +16,8 @@ import com.nhn.android.naverlogin.OAuthLogin
 import com.nhn.android.naverlogin.OAuthLoginHandler
 import com.sizey.sizey.R
 import com.sizey.sizey.ui.adapter.BottomDotAdapter
-import com.sizey.sizey.ui.login.LoginActivity
 import com.sizey.sizey.ui.custom.ZoomOutPageTransformer
+import com.sizey.sizey.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -43,7 +43,8 @@ class MainActivity : AppCompatActivity() {
         // Tutorial viewPager & indicator
         viewpager_main.adapter = BottomDotAdapter(supportFragmentManager)
         viewpager_main.currentItem = 0
-        viewpager_main.setPageTransformer(true,
+        viewpager_main.setPageTransformer(
+            true,
             ZoomOutPageTransformer()
         )
         tablayout_main.setupWithViewPager(viewpager_main, true)
@@ -138,6 +139,31 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
+    override fun onResume() {
+        Log.d("TAG", ": onResume")
+        super.onResume()
+
+    }
+
+    override fun onStop() {
+        Log.d("TAG", ": onStop")
+        super.onStop()
+
+    }
+
+    override fun onStart() {
+        Log.d("TAG", ": onStart")
+        super.onStart()
+
+    }
+
+    override fun onDestroy() {
+        Log.d("TAG", ": onDestroy")
+        super.onDestroy()
+
+    }
+
     companion object {
         private const val TAG = "MainActivity.kt"
         private const val NAVER_CLIENT_ID = "hoKFoPP88o6CS80Hz1fQ"
@@ -147,8 +173,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
 
-        if (System.currentTimeMillis() > backKeyPressedTime+2000){
-            backKeyPressedTime= System.currentTimeMillis()
+        if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
+            backKeyPressedTime = System.currentTimeMillis()
             toast("뒤로 버튼을 한번 더 누르시면 종료됩니다.")
             return
         }
