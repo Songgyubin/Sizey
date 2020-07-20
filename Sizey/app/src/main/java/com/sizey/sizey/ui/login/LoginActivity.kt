@@ -3,10 +3,12 @@ package com.sizey.sizey.ui.login
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.setFragmentResult
 import com.sizey.sizey.R
 import com.sizey.sizey.ui.adapter.SignPagerAdapter
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_login.btn_next
+import kotlinx.android.synthetic.main.fragment_email.*
+import kotlinx.android.synthetic.main.fragment_signup_password.*
 import kotlinx.android.synthetic.main.sign_up_toolbar.*
 
 class LoginActivity : AppCompatActivity() {
@@ -14,6 +16,11 @@ class LoginActivity : AppCompatActivity() {
     // firebase
 //    private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var adapter: SignPagerAdapter
+
+    // sign info
+    private var email = ""
+    private var pw = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +58,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun backPage() {
-        if (vp_sign.currentItem == 0) {
+        if (vp_sign.currentItem == 1) {
             super.onBackPressed()
         } else {
             vp_sign.currentItem = vp_sign.currentItem - 1
@@ -59,15 +66,20 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun nextPage() {
+    fun nextPage() {
         if (vp_sign.currentItem == adapter.count - 1) {
             // 완료 btn
 
         } else {
             vp_sign.currentItem = vp_sign.currentItem + 1
+            when(vp_sign.currentItem){
+                1-> email  = adapter.items[0].ed_email.text.toString()
+                2-> pw = adapter.items[1].ed_sign_up_pw.text.toString()
+            }
             setToolbarTitle()
         }
     }
+
     /*private fun firebaseLogin(){
         firebaseAuth.signInWithEmailAndPassword(ed_email.text.toString(),ed_pw.text.toString())
             .addOnCompleteListener {
@@ -81,13 +93,12 @@ class LoginActivity : AppCompatActivity() {
     }*/
 
     override fun onBackPressed() {
-        if (vp_sign.currentItem == 0) {
+        if (vp_sign.currentItem == 1) {
 
             super.onBackPressed()
         } else {
             vp_sign.currentItem = vp_sign.currentItem - 1
         }
-
     }
 
     override fun onResume() {
@@ -117,4 +128,6 @@ class LoginActivity : AppCompatActivity() {
     companion object {
         private const val TAG = "LoginActivity.kt"
     }
+
+
 }

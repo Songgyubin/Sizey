@@ -24,10 +24,6 @@ class PasswordFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d(TAG, ": onViewCreated")
-        setFragmentResultListener("test"){ key, bundle->
-            val s = bundle.getString("id")
-            ed_sign_up_pw.hint = s
-        }
     }
 
     override fun onStop() {

@@ -26,4 +26,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_email"
         tools:text="테스트" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

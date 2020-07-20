@@ -6,10 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.sizey.sizey.R
+import com.sizey.sizey.listener.ViewPagerListener
+import kotlinx.android.synthetic.main.fragment_email.*
 
-class EmailFragment : Fragment(){
+class EmailFragment : Fragment() {
+
+     private var viewPagerListener: ViewPagerListener? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -17,12 +20,21 @@ class EmailFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
         Log.d(TAG, ": onCrateView")
+
         return inflater.inflate(R.layout.fragment_email, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d(TAG, ": onViewCreated")
+        /*btn_next.setOnClickListener {
+            *//*LoginActivity().nextPage()
+            viewPagerListener!!.nextPage(1)*//*
+        }*/
+    }
+
+    fun setDialogListener(viewPagerListener: ViewPagerListener) {
+        this.viewPagerListener = viewPagerListener
     }
 
     override fun onStop() {
