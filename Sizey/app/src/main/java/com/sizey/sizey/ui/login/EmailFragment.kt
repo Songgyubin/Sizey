@@ -7,34 +7,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.sizey.sizey.R
-import com.sizey.sizey.listener.ViewPagerListener
+import com.sizey.sizey.util.EMAIL
+import com.sizey.sizey.util.check
 import kotlinx.android.synthetic.main.fragment_email.*
 
 class EmailFragment : Fragment() {
-
-     private var viewPagerListener: ViewPagerListener? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.d(TAG, ": onCrateView")
-
         return inflater.inflate(R.layout.fragment_email, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d(TAG, ": onViewCreated")
-        /*btn_next.setOnClickListener {
-            *//*LoginActivity().nextPage()
-            viewPagerListener!!.nextPage(1)*//*
-        }*/
-    }
-
-    fun setDialogListener(viewPagerListener: ViewPagerListener) {
-        this.viewPagerListener = viewPagerListener
+        ed_email.check("이메일 형식으로 입력하세요",tv_email_warning,EMAIL,null)
     }
 
     override fun onStop() {

@@ -5,13 +5,15 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.sizey.sizey.R
 import com.sizey.sizey.ui.adapter.SignPagerAdapter
+import com.sizey.sizey.ui.signup.SexNickFragment
+import com.sizey.sizey.ui.signup.SignUpPasswordFragment
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_login.btn_next
 import kotlinx.android.synthetic.main.fragment_email.*
 import kotlinx.android.synthetic.main.fragment_signup_password.*
 import kotlinx.android.synthetic.main.sign_up_toolbar.*
 
-class LoginActivity : AppCompatActivity() {
+class SignActivity : AppCompatActivity() {
 
     // firebase
 //    private lateinit var firebaseAuth: FirebaseAuth
@@ -33,7 +35,7 @@ class LoginActivity : AppCompatActivity() {
         vp_sign.offscreenPageLimit = 3 // 5
         adapter = SignPagerAdapter(supportFragmentManager)
         adapter.addItem(EmailFragment())
-        adapter.addItem(PasswordFragment())
+        adapter.addItem(SignUpPasswordFragment())
         adapter.addItem(SexNickFragment())
 
         vp_sign.adapter = adapter
@@ -72,12 +74,19 @@ class LoginActivity : AppCompatActivity() {
 
         } else {
             vp_sign.currentItem = vp_sign.currentItem + 1
-            when(vp_sign.currentItem){
-                1-> email  = adapter.items[0].ed_email.text.toString()
-                2-> pw = adapter.items[1].ed_sign_up_pw.text.toString()
+            when (vp_sign.currentItem) {
+                1 -> {
+                    email = adapter.items[0].ed_email.text.toString()
+                }
+                2 -> {
+                    pw = adapter.items[1].ed_sign_up_pw.text.toString()
+                }
+
+
             }
             setToolbarTitle()
         }
+
     }
 
     /*private fun firebaseLogin(){

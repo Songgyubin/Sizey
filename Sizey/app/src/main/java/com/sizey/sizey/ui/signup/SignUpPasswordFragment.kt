@@ -1,4 +1,4 @@
-package com.sizey.sizey.ui.login
+package com.sizey.sizey.ui.signup
 
 import android.os.Bundle
 import android.util.Log
@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResultListener
 import com.sizey.sizey.R
+import com.sizey.sizey.util.PASSWORD
+import com.sizey.sizey.util.PASSWORD_CHECK
+import com.sizey.sizey.util.check
 import kotlinx.android.synthetic.main.fragment_signup_password.*
 
-class PasswordFragment : Fragment() {
+class SignUpPasswordFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,7 +25,13 @@ class PasswordFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d(TAG, ": onViewCreated")
+        ed_sign_up_pw.check("6자리 이상 입력하세요", tv_sign_up_pw_warning, PASSWORD, null)
+        ed_sign_up_pw_check.check(
+            "비밀번호가 다릅니다",
+            tv_sign_up_pw_check_warning,
+            PASSWORD_CHECK,
+            ed_sign_up_pw
+        )
     }
 
     override fun onStop() {
