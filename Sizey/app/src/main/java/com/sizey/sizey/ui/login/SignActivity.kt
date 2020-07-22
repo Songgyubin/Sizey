@@ -5,13 +5,15 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.sizey.sizey.R
 import com.sizey.sizey.ui.adapter.SignPagerAdapter
-import com.sizey.sizey.ui.signup.SexNickFragment
+import com.sizey.sizey.ui.signup.GenderNickFragment
 import com.sizey.sizey.ui.signup.SignUpPasswordFragment
-import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_login.btn_next
+import kotlinx.android.synthetic.main.activity_sign.*
+import kotlinx.android.synthetic.main.activity_sign.btn_next
 import kotlinx.android.synthetic.main.fragment_email.*
+import kotlinx.android.synthetic.main.fragment_signup_gendernick.*
 import kotlinx.android.synthetic.main.fragment_signup_password.*
 import kotlinx.android.synthetic.main.sign_up_toolbar.*
+import org.jetbrains.anko.backgroundResource
 
 class SignActivity : AppCompatActivity() {
 
@@ -22,21 +24,21 @@ class SignActivity : AppCompatActivity() {
     // sign info
     private var email = ""
     private var pw = ""
-
+    private var gender = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_sign)
 
         // saved id
 //        vp_sign.offscreenPageLimit=2
 
         // un saved id
-        vp_sign.offscreenPageLimit = 3 // 5
+        vp_sign.offscreenPageLimit = 4 // 5
         adapter = SignPagerAdapter(supportFragmentManager)
         adapter.addItem(EmailFragment())
         adapter.addItem(SignUpPasswordFragment())
-        adapter.addItem(SexNickFragment())
+        adapter.addItem(GenderNickFragment())
 
         vp_sign.adapter = adapter
         setToolbarTitle()
@@ -60,7 +62,7 @@ class SignActivity : AppCompatActivity() {
     }
 
     private fun backPage() {
-        if (vp_sign.currentItem == 1) {
+        if (vp_sign.currentItem == 0) {
             super.onBackPressed()
         } else {
             vp_sign.currentItem = vp_sign.currentItem - 1
@@ -71,15 +73,23 @@ class SignActivity : AppCompatActivity() {
     fun nextPage() {
         if (vp_sign.currentItem == adapter.count - 1) {
             // 완료 btn
-
+            gender = GenderNickFragment().gender
+            Log.d(TAG, "dd: $gender")
         } else {
             vp_sign.currentItem = vp_sign.currentItem + 1
             when (vp_sign.currentItem) {
                 1 -> {
+                    Log.d(TAG, ": 111")
                     email = adapter.items[0].ed_email.text.toString()
                 }
                 2 -> {
+                    Log.d(TAG, ": 222")
                     pw = adapter.items[1].ed_sign_up_pw.text.toString()
+                }
+                3->{
+                    Log.d(TAG, ": ????")
+                    gender = GenderNickFragment().gender
+                    Log.d(TAG, ": $gender")
                 }
 
 
