@@ -75,37 +75,40 @@ class SignActivity : AppCompatActivity() {
 
     private fun nextPage() {
 
-            when (vp_sign.currentItem) {
-                0 -> {
-                    mEmail = adapter.items[0].ed_email.text.toString()
-                    vp_sign.currentItem = vp_sign.currentItem + 1
-                }
-                1 -> {
-                    mPw = adapter.items[1].ed_sign_up_pw.text.toString()
-                    vp_sign.currentItem = vp_sign.currentItem + 1
-                }
-                2 -> {
-                    val s = adapter.items[2] as SignUpGenderNickFragment
-                    s.setGenderListener(object : GenderButtonListener {
-                        override fun selectGender(gender: String) {
-                            mGender = gender
-                        }
-                    })
-                    vp_sign.currentItem = vp_sign.currentItem + 1
-//                    btn_next.text = "가입하기"
-
-                }
-                3 -> {
-                    mHeight = adapter.items[3].ed_sign_up_height.text.toString().toDouble() ?: 0.0
-                    mWeight = adapter.items[3].ed_sign_up_weight.text.toString().toDouble() ?: 0.0
-                    Log.d(TAG, "키 : $mHeight")
-                    Log.d(TAG, "몸무게 : $mWeight")
-                    firebaseSignUp()
-                }
+        when (vp_sign.currentItem) {
+            0 -> {
+                mEmail = adapter.items[0].ed_email.text.toString()
+                vp_sign.currentItem = vp_sign.currentItem + 1
+                Log.d(TAG, "이메일1: $mEmail")
+            }
+            1 -> {
+                mPw = adapter.items[1].ed_sign_up_pw.text.toString()
+                vp_sign.currentItem = vp_sign.currentItem + 1
+                Log.d(TAG, "이메일2: $mEmail")
+            }
+            2 -> {
+                val s = adapter.items[2] as SignUpGenderNickFragment
+                s.setGenderListener(object : GenderButtonListener {
+                    override fun selectGender(gender: String) {
+                        mGender = gender
+                    }
+                })
+                vp_sign.currentItem = vp_sign.currentItem + 1
+                btn_next.text = "가입하기"
 
             }
-            setToolbarTitle()
+            3 -> {
+                val height = adapter.items[3].ed_sign_up_height.text.toString()
+                val weight = adapter.items[3].ed_sign_up_weight.text.toString()
+                if (height.isNotEmpty())
+                    mHeight = height.toDouble()
+                if (weight.isNotEmpty())
+                    mWeight = weight.toDouble()
+                firebaseSignUp()
+            }
         }
+        setToolbarTitle()
+    }
 
     /*private fun firebaseLogin(){
         firebaseAuth.signInWithEmailAndPassword(ed_email.text.toString(),ed_pw.text.toString())
