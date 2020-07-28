@@ -17,7 +17,7 @@ import com.nhn.android.naverlogin.OAuthLoginHandler
 import com.sizey.sizey.R
 import com.sizey.sizey.ui.adapter.BottomDotAdapter
 import com.sizey.sizey.ui.custom.ZoomOutPageTransformer
-import com.sizey.sizey.ui.login.SignActivity
+import com.sizey.sizey.ui.signup.SignActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast

@@ -1,4 +1,4 @@
-package com.sizey.sizey.ui.login
+package com.sizey.sizey.ui.signup
 
 import android.os.Bundle
 import android.util.Log
