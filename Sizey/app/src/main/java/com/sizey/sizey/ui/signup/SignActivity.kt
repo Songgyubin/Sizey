@@ -4,17 +4,20 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.sizey.sizey.R
 import com.sizey.sizey.listener.GenderButtonListener
 import com.sizey.sizey.ui.adapter.SignPagerAdapter
 import kotlinx.android.synthetic.main.activity_sign.*
 import kotlinx.android.synthetic.main.fragment_email.*
+import kotlinx.android.synthetic.main.fragment_signup_gendernick.*
 import kotlinx.android.synthetic.main.fragment_signup_heightweight.*
 import kotlinx.android.synthetic.main.fragment_signup_password.*
 import kotlinx.android.synthetic.main.sign_up_toolbar.*
 import org.jetbrains.anko.toast
+import kotlin.random.Random
 
-class SignActivity : AppCompatActivity() {
+class SignActivity : AppCompatActivity(), GenderButtonListener {
 
     // firebase
     private lateinit var firebaseAuth: FirebaseAuth
@@ -24,12 +27,16 @@ class SignActivity : AppCompatActivity() {
     private var mEmail = ""
     private var mPw = ""
     private var mGender = ""
-    private var mHeight = 0.0
-    private var mWeight = 0.0
+    private var mNick: String? = null
+    private var mHeight: Double? = null
+    private var mWeight: Double? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign)
+
+
+        
 
         // saved id
 //        vp_sign.offscreenPageLimit=2
@@ -46,14 +53,12 @@ class SignActivity : AppCompatActivity() {
         vp_sign.adapter = adapter
         setToolbarTitle()
 
-
-//        btn_signup_toolbar_back
-
         firebaseAuth = FirebaseAuth.getInstance()
 
-//        btn_next.setOnClickListener { firebaseLogin() }
         btn_next.setOnClickListener { nextPage() }
         btn_signup_toolbar_back.setOnClickListener { backPage() }
+        val s = adapter.items[2] as SignUpGenderNickFragment
+        s.setGenderListener(this)
     }
 
     private fun setToolbarTitle() {
@@ -87,24 +92,29 @@ class SignActivity : AppCompatActivity() {
                 Log.d(TAG, "이메일2: $mEmail")
             }
             2 -> {
-                val s = adapter.items[2] as SignUpGenderNickFragment
-                s.setGenderListener(object : GenderButtonListener {
-                    override fun selectGender(gender: String) {
-                        mGender = gender
-                    }
-                })
+                val nick = adapter.items[2].ed_nick.text.toString()
+
+                mNick = if (nick.isNotEmpty())
+                    nick
+                else
+                    "User${kotlin.math.abs(Random.nextLong())}"
+
                 vp_sign.currentItem = vp_sign.currentItem + 1
                 btn_next.text = "가입하기"
-
             }
             3 -> {
                 val height = adapter.items[3].ed_sign_up_height.text.toString()
                 val weight = adapter.items[3].ed_sign_up_weight.text.toString()
-                if (height.isNotEmpty())
-                    mHeight = height.toDouble()
-                if (weight.isNotEmpty())
-                    mWeight = weight.toDouble()
-                firebaseSignUp()
+
+                mHeight = if (height.isNotEmpty())
+                    height.toDouble()
+                else
+                    0.0
+                mWeight = if (weight.isNotEmpty())
+                    weight.toDouble()
+                else
+                    0.0
+                signUpFirebase()
             }
         }
         setToolbarTitle()
@@ -122,14 +132,34 @@ class SignActivity : AppCompatActivity() {
             }
     }*/
 
-    private fun firebaseSignUp() {
-        Log.d(TAG, ": firebaseSignUp")
+    private fun signUpFirebase() {
+        Log.d(TAG, ": signUpFirebase")
         firebaseAuth.createUserWithEmailAndPassword(mEmail, mPw).addOnCompleteListener {
-            if (it.isSuccessful)
+            if (it.isSuccessful) {
                 toast("회원가입 성공")
-            else
+                saveProfileFirebase(it.getResult()!!.user!!.uid)
+            } else
                 toast("회원가입 실패")
         }
+    }
+
+    private fun saveProfileFirebase(uId: String) {
+        val db = FirebaseFirestore.getInstance()
+
+        val profile = hashMapOf(
+            "gender" to mGender,
+            "nick" to mNick,
+            "height" to mHeight,
+            "weight" to mWeight
+        )
+        db.collection("users").document(uId).set(profile)
+            .addOnSuccessListener { toast("프로필 저장 완료") }
+            .addOnFailureListener {
+                Log.d(TAG, ": $it")
+                toast("프로필 저장 실패")
+            }
+
+
     }
 
 
@@ -167,6 +197,10 @@ class SignActivity : AppCompatActivity() {
 
     companion object {
         private const val TAG = "LoginActivity.kt"
+    }
+
+    override fun selectGender(gender: String) {
+        mGender = gender
     }
 
 
