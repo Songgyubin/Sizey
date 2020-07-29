@@ -8,12 +8,14 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.sizey.sizey.R
 import com.sizey.sizey.listener.GenderButtonListener
 import com.sizey.sizey.ui.adapter.SignPagerAdapter
+import com.sizey.sizey.ui.policy.PolicyActivty
 import kotlinx.android.synthetic.main.activity_sign.*
 import kotlinx.android.synthetic.main.fragment_email.*
 import kotlinx.android.synthetic.main.fragment_signup_gendernick.*
 import kotlinx.android.synthetic.main.fragment_signup_heightweight.*
 import kotlinx.android.synthetic.main.fragment_signup_password.*
 import kotlinx.android.synthetic.main.sign_up_toolbar.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import kotlin.random.Random
 
@@ -22,6 +24,8 @@ class SignActivity : AppCompatActivity(), GenderButtonListener {
     // firebase
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var adapter: SignPagerAdapter
+    private lateinit var firebaseDB : FirebaseFirestore
+
 
     // sign info
     private var mEmail = ""
@@ -36,10 +40,16 @@ class SignActivity : AppCompatActivity(), GenderButtonListener {
         setContentView(R.layout.activity_sign)
 
 
-        
 
         // saved id
 //        vp_sign.offscreenPageLimit=2
+        /*firebaseDB = FirebaseFirestore.getInstance()
+        firebaseDB.collection("users").whereEqualTo("email",mEmail)
+            .get().addOnSuccessListener {
+                toast("아이디가 있습니다")
+            }.addOnFailureListener { toast("아이디가 없습니다") }*/
+
+
 
         // un saved id
         vp_sign.offscreenPageLimit = 4 // 5
@@ -82,9 +92,10 @@ class SignActivity : AppCompatActivity(), GenderButtonListener {
 
         when (vp_sign.currentItem) {
             0 -> {
+
                 mEmail = adapter.items[0].ed_email.text.toString()
                 vp_sign.currentItem = vp_sign.currentItem + 1
-                Log.d(TAG, "이메일1: $mEmail")
+
             }
             1 -> {
                 mPw = adapter.items[1].ed_sign_up_pw.text.toString()
@@ -144,16 +155,19 @@ class SignActivity : AppCompatActivity(), GenderButtonListener {
     }
 
     private fun saveProfileFirebase(uId: String) {
-        val db = FirebaseFirestore.getInstance()
+        firebaseDB = FirebaseFirestore.getInstance()
 
         val profile = hashMapOf(
+            "email" to mEmail,
             "gender" to mGender,
             "nick" to mNick,
             "height" to mHeight,
             "weight" to mWeight
         )
-        db.collection("users").document(uId).set(profile)
-            .addOnSuccessListener { toast("프로필 저장 완료") }
+        firebaseDB.collection("users").document(uId).set(profile)
+            .addOnSuccessListener { toast("프로필 저장 완료")
+                    startActivity<PolicyActivty>()
+            }
             .addOnFailureListener {
                 Log.d(TAG, ": $it")
                 toast("프로필 저장 실패")

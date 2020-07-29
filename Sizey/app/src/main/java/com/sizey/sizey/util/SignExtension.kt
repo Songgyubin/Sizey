@@ -4,6 +4,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
 import android.widget.TextView
+import com.google.firebase.firestore.FirebaseFirestore
 import com.sizey.sizey.R
 
 val PASSWORD = 0
@@ -73,6 +74,8 @@ fun EditText.check(message: String, tv: TextView, flag: Int, ed: EditText?) {
                         tv.text = ""
                         this@check.setBackgroundResource(R.drawable.white_ed)
                     }
+
+
                 }
 
 

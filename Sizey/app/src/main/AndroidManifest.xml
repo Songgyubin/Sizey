@@ -25,6 +25,12 @@
     <activity android:name=".ui.signup.SignActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"
         />
+        <activity android:name=".ui.home.HomeSizeActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            />
+        <activity android:name=".ui.policy.PolicyActivty"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            />
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />
