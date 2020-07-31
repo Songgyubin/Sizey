@@ -8,6 +8,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.sizey.sizey.R
 import com.sizey.sizey.listener.GenderButtonListener
 import com.sizey.sizey.ui.adapter.SignPagerAdapter
+import com.sizey.sizey.ui.home.HomeSizeActivity
 import com.sizey.sizey.ui.policy.PolicyActivty
 import kotlinx.android.synthetic.main.activity_sign.*
 import kotlinx.android.synthetic.main.fragment_email.*
@@ -166,7 +167,7 @@ class SignActivity : AppCompatActivity(), GenderButtonListener {
         )
         firebaseDB.collection("users").document(uId).set(profile)
             .addOnSuccessListener { toast("프로필 저장 완료")
-                    startActivity<PolicyActivty>()
+                    startActivity<HomeSizeActivity>()
             }
             .addOnFailureListener {
                 Log.d(TAG, ": $it")
