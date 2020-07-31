@@ -1,12 +1,14 @@
 package com.sizey.sizey.ui.home
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sizey.sizey.R
 import com.sizey.sizey.data.model.Category
 import com.sizey.sizey.ui.adapter.CategoryAdapter
 import kotlinx.android.synthetic.main.activity_home_size.*
+import org.jetbrains.anko.toast
 
 class HomeSizeActivity : AppCompatActivity() {
 
@@ -23,10 +25,16 @@ class HomeSizeActivity : AppCompatActivity() {
         items.add(Category(R.drawable.tmpimg, "바지"))
         items.add(Category(R.drawable.tmpimg, "치마"))
         items.add(Category(R.drawable.tmpimg, "원피스"))
-
+        items.add(Category(R.drawable.tmpimg, "원피스"))
+        items.add(Category(R.drawable.tmpimg, "원피스"))
         adapter = CategoryAdapter(this, items)
         recycler_category.adapter = adapter
+        adapter.setOnItemClickListener(object : CategoryAdapter.OnCategoryListener{
+            override fun onItemClick(v: View, position: Int) {
+                toast(adapter.getItem(position).name)
+            }
 
+        })
 
     }
 }
