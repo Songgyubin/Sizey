@@ -37,4 +37,10 @@ class HomeSizeActivity : AppCompatActivity() {
         })
 
     }
+
+    private fun addAR(){
+
+    }
+
+
 }

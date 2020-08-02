@@ -28,10 +28,8 @@
     <string name="go_sign_up">가입하기</string>
     <string name="policy">이용약관</string>
     <string name="compare_size">사이즈 비교</string>
-
-
-    <!-- height -->
-    <string name="toolbar_size">60dp</string>
+    <string name="setting">설정</string>
+    <string name="size">사이즈</string>
 
 
     <!-- kakao -->
@@ -41,9 +39,6 @@
     <string name="naver_app_secret">Q8eRAuTjHM</string>
     <string name="input_email">이메일을 입력하세요</string>
     <string name="input_pw">비밀번호를 입력해주세요</string>
-
-
-
 
 
 

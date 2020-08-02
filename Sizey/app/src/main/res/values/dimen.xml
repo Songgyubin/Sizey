@@ -4,6 +4,6 @@
 
     <!-- hegiht -->
     <dimen name="toolbar_height">60dp</dimen>
-
+    <dimen name="btn_home">50dp</dimen>
 
 </resources>
