@@ -19,6 +19,7 @@ import com.sizey.sizey.ui.adapter.BottomDotAdapter
 import com.sizey.sizey.ui.custom.ZoomOutPageTransformer
 import com.sizey.sizey.ui.signup.SignActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.toolbar_none_logo.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
@@ -38,7 +39,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        tv_toolbar_none_logo.text = "welcome"
 
         // Tutorial viewPager & indicator
         viewpager_main.adapter = BottomDotAdapter(supportFragmentManager)

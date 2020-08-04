@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.sizey.sizey.R
 import com.sizey.sizey.data.model.Category
 import com.sizey.sizey.ui.adapter.CategoryAdapter
+import com.sizey.sizey.ui.setting.SettingActivity
 import kotlinx.android.synthetic.main.activity_home_size.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 class HomeSizeActivity : AppCompatActivity() {
@@ -32,8 +34,8 @@ class HomeSizeActivity : AppCompatActivity() {
         adapter.setOnItemClickListener(object : CategoryAdapter.OnCategoryListener{
             override fun onItemClick(v: View, position: Int) {
                 toast(adapter.getItem(position).name)
+                startActivity<SettingActivity>()
             }
-
         })
 
     }

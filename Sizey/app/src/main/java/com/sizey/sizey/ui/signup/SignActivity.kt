@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_email.*
 import kotlinx.android.synthetic.main.fragment_signup_gendernick.*
 import kotlinx.android.synthetic.main.fragment_signup_heightweight.*
 import kotlinx.android.synthetic.main.fragment_signup_password.*
-import kotlinx.android.synthetic.main.sign_up_toolbar.*
+import kotlinx.android.synthetic.main.toolbar_none_logo.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import kotlin.random.Random
@@ -39,7 +39,7 @@ class SignActivity : AppCompatActivity(), GenderButtonListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign)
-
+        tv_toolbar_none_logo.text="회원가입"
 
 
         // saved id
@@ -67,16 +67,16 @@ class SignActivity : AppCompatActivity(), GenderButtonListener {
         firebaseAuth = FirebaseAuth.getInstance()
 
         btn_next.setOnClickListener { nextPage() }
-        btn_signup_toolbar_back.setOnClickListener { backPage() }
+        btn_toolbar_none_logo.setOnClickListener { backPage() }
         val s = adapter.items[2] as SignUpGenderNickFragment
         s.setGenderListener(this)
     }
 
     private fun setToolbarTitle() {
         if (vp_sign.currentItem == 0) {
-            tv_signup_toolbar_title.text = "이메일로 시작하기"
+            tv_toolbar_none_logo.text = "이메일로 시작하기"
         } else {
-            tv_signup_toolbar_title.text = "회원가입"
+            tv_toolbar_none_logo.text = "회원가입"
         }
     }
 

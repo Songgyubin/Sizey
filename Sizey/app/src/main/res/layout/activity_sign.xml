@@ -7,7 +7,7 @@
 
     <include
         android:id="@+id/toolbar_sign_up"
-        layout="@layout/sign_up_toolbar"
+        layout="@layout/toolbar_none_logo"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.sizey.sizey.ui.custom.NonSwipeViewPager

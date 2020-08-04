@@ -39,7 +39,7 @@
     <string name="naver_app_secret">Q8eRAuTjHM</string>
     <string name="input_email">이메일을 입력하세요</string>
     <string name="input_pw">비밀번호를 입력해주세요</string>
-
+    <string name="welcome1">welcome</string>
 
 
 </resources>

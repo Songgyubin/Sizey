@@ -3,7 +3,9 @@
     package="com.sizey.sizey">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".MyApplication"
@@ -22,15 +24,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    <activity android:name=".ui.signup.SignActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-        />
-        <activity android:name=".ui.home.HomeSizeActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            />
-        <activity android:name=".ui.policy.PolicyActivty"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            />
+        <activity
+            android:name=".ui.signup.SignActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".ui.home.HomeSizeActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".ui.policy.PolicyActivty"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".ui.setting.SettingActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />
