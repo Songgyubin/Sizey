@@ -30,8 +30,6 @@ class SignUpGenderNickFragment : Fragment(R.layout.fragment_signup_gendernick) {
         super.onViewCreated(view, savedInstanceState)
         ed_nick.check("2자 이상 입력하세요", tv_nick_warning, NICK, null)
 
-
-
         btn_gender_man.setOnClickListener {
             Log.d(TAG, ": 남자")
             btn_gender_man.setBackgroundResource(R.drawable.selected_btn)

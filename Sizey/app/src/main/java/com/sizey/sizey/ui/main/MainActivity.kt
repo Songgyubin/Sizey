@@ -3,6 +3,7 @@ package com.sizey.sizey.ui.main
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.kakao.auth.AuthType
 import com.kakao.auth.ISessionCallback
@@ -40,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         tv_toolbar_none_logo.text = "welcome"
-
+        btn_toolbar_none_logo.visibility = View.GONE
         // Tutorial viewPager & indicator
         viewpager_main.adapter = BottomDotAdapter(supportFragmentManager)
         viewpager_main.currentItem = 0

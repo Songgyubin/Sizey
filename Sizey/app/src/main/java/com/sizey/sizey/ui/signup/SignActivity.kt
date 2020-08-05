@@ -83,6 +83,7 @@ class SignActivity : AppCompatActivity(), GenderButtonListener {
     private fun backPage() {
         if (vp_sign.currentItem == 0) {
             super.onBackPressed()
+            finish()
         } else {
             vp_sign.currentItem = vp_sign.currentItem - 1
             setToolbarTitle()
@@ -93,7 +94,6 @@ class SignActivity : AppCompatActivity(), GenderButtonListener {
 
         when (vp_sign.currentItem) {
             0 -> {
-
                 mEmail = adapter.items[0].ed_email.text.toString()
                 vp_sign.currentItem = vp_sign.currentItem + 1
 
@@ -101,7 +101,7 @@ class SignActivity : AppCompatActivity(), GenderButtonListener {
             1 -> {
                 mPw = adapter.items[1].ed_sign_up_pw.text.toString()
                 vp_sign.currentItem = vp_sign.currentItem + 1
-                Log.d(TAG, "이메일2: $mEmail")
+                adapter.items[2].tv_welcome_email.text = "$mEmail 님!"
             }
             2 -> {
                 val nick = adapter.items[2].ed_nick.text.toString()
@@ -179,7 +179,7 @@ class SignActivity : AppCompatActivity(), GenderButtonListener {
 
 
     override fun onBackPressed() {
-        if (vp_sign.currentItem == 1) {
+        if (vp_sign.currentItem == 0) {
             super.onBackPressed()
         } else {
             vp_sign.currentItem = vp_sign.currentItem - 1
